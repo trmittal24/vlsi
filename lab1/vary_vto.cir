@@ -1,0 +1,30 @@
+*nmos varying vto
+
+.include /home/vlsilab/UG_students_2018/t14y_tsmc_025_level3.txt
+
+m1 vdd in 0 0 cmosn l=1u w=0.5u
+
+v_dd vdd 0 3.3
+v_in in 0 3.3
+
+.dc v_dd 0 3.3 0.1 v_in 0 3.3 1
+.dc v_in 0 3.3 0.1 v_dd 0 3.3 1
+
+.control
+
+foreach vto_i 0.5 1 1.5
+altermod m1 VTO = $vto_i
+run
+end
+
+.endc
+
+.control
+
+foreach iter 1 2 3 4 5 6
+setplot dc$iter
+plot -v_dd#branch
+end
+.endc
+
+.end

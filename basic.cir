@@ -1,0 +1,19 @@
+*nmos charac
+
+.include /home/tarun/ngspice/t14y_tsmc_025_level3.txt
+
+m1 vdd in 0 0 cmosn l=1u w=1u
+
+v_dd vdd 0 3.3
+v_in in 0 3.3
+
+.dc v_dd 0 3.3 0.1 v_in 0 3.3 1
+.control
+
+foreach iter 1 2 3
+run
+setplot dc$iter
+plot -v_dd#branch
+end
+.endc
+.end

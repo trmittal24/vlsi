@@ -1,0 +1,32 @@
+*vary_temp
+
+.include /home/vlsilab/UG_students_2018/t14y_tsmc_025_level3.txt
+
+m1 vdd vg 0 0 cmosn l=1u w = 1u
+
+v_dd vdd 0 3.3
+v_gs vg 0 3.3
+
+.dc v_dd 0 3.3 0.1 v_gs 0 3.3 1
+.dc v_gs 0 3.3 0.1 v_dd 0 3.3 1
+
+.control
+
+foreach t 50 100 200
+set temp = $t 
+run
+end
+
+.endc
+
+.control
+
+foreach t 1 2 3 4 5 6
+setplot dc$t 
+plot -v_dd#branch
+end
+
+.endc
+
+
+.end

@@ -1,0 +1,42 @@
+*nmos characteristics
+
+.include /home/vlsilab/UG_students_2018/t14y_tsmc_025_level3.txt
+
+m1 vdd in 0 0 cmosn l=1u w=0.5u
+
+v_dd vdd 0 3.3
+v_in in 0 3.3
+
+
+.dc v_dd 0 3.3 0.1 v_in 0 3.3 1
+.dc v_in 0 3.3 0.1 v_dd 0 3.3 1
+
+
+*calculating for diff width
+.control
+
+*foreach len 1.0e-6 4.0e-6 10e-6
+*alter m1 l = $len
+*run
+*end
+let len = 1.0e-6
+*alter m1 l = leng
+*run
+while len < 10e-6
+alter m1 l = len
+*alter m1 w = len
+run
+let len = len + 2e-6
+end
+.endc
+
+*plotting diff
+.control
+foreach count 1 2 3 4 5 6
+setplot dc$count
+*setplot dc1
+plot -v_dd#branch
+end 
+.endc
+
+.end

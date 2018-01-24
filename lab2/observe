@@ -1,0 +1,42 @@
+1. dc analysis
+  a. with l=1u w=1u r=100k
+  
+  VIL = 0.423452
+  VIH = 1.08205
+  VOL = 0.263043
+  VOH = 2.96104
+
+  Noise margin (input) = 0.658598
+  Noise margin (output) = 2.697997
+
+  b. with l=1u w=1u r=1000k
+  
+  VIL = 0.31041
+  VIH = 0.69055
+  VOL = 0.0482759
+  VOH = 2.98571
+
+  Noise margin (input) = 0.380149
+  Noise margin (output) = 2.9374341
+
+
+2. transient analysis
+   a. with l=1u w=1u r=100k
+
+   tphl = 1.05007-1.02673 = 0.02334e-9
+   tplh = 3.18247-3.15 = 0.03247e-9
+
+    tp = 0.027905e-9 
+  
+  rise time = 3.2 - 3.149 = 0.051n
+  fall time = 1.059 - 1.012 = 0.047n
+
+  b. with l=100u w=1u r=100k
+
+  tphl = 1.04995 - 1.02641 = 0.02354e-9
+  tplh = 3.18254 - 3.15007 = 0.03247e-9
+  
+  tp = 0.028005e-9
+
+  rise time = 3.2 - 3.148 = 0.052n
+  fall time = 1.058 - 1.012 = 0.046n

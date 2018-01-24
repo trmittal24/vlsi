@@ -1,0 +1,43 @@
+*nmos load inverter
+
+.include /home/vlsilab/UG_students_2018/t14y_tsmc_025_level3.txt
+
+m1 vd vg 0 0 cmosn w=1u l=1u
+m2 vdd vdd vd 0 cmosn w=1u l=1u
+
+v_dd vdd 0 5
+*vin vg 0 5
+
+v_g vg 0 dc 1 pulse(0 5 1n 0.1n 0.1n 2n 4n) 
+
+*.tran 0.01ns 4n
+.dc v_g 0 5 0.1
+*.measure tran vd_max MAX vd from=0n to =4n
+*.measure tran vd_min MIN vd from=0n to =4n
+*.measure tran id_avg AVG v_dd#branch from=0n to =4n 
+
+.control
+foreachs wid 10u 50u
+foreach widm1 1u 75u 1000u   
+alter m2 w = $wid
+alter m1 w = $widm1
+run
+end
+end
+.endc
+
+
+.control
+
+foreach t 1 2 3 4 5 6
+*setplot tran$t
+setplot dc$t
+*plot vd  deriv(vd)
+*setplot dc$t
+plot vg vd
+*plot -v_dd#branch
+end
+
+.endc
+
+.end

@@ -1,0 +1,70 @@
+*nmos inverter
+
+.include /home/tarun/ngspice/t14y_tsmc_025_level3.txt
+
+m1 vd vg 0 0 cmosn l=1u w=1u
+r1 vdd vd 100k
+
+v_dd vdd 0 3
+*v_g vg 0 3
+
+v_g vg 0 dc 1 pulse(0 3 1n 0.1n 0.1n 2n 4n) 
+.dc v_g 0 3 0.1
+*.tran 0.01ns 4n
+*.meas tran vd_max MAX v(vd) from=0n to =4n
+*.meas tran vd_min MIN v(vd) from=0n to =4n
+*.meas tran trise TRIG v(vd) VAL=0 RISE=1 TARG V(vd) VAL=2.7 RISE=1 
+
+
+.control
+foreach wid 10u   
+foreach res 30k 
+alter r1 = $res
+alter m1 w = $wid
+run
+end
+end
+.endc
+
+
+.control
+
+*foreach t 1 
+*setplot tran$t
+*plot vg vd
+setplot dc$t
+plot vg vd deriv(vd)
+*plot -v_dd#branch
+end
+
+.endc
+
+
+.control
+run
+
+*meas tran vd_max MAX v(vd) from=0n to =1n
+*meas tran vd_min MIN v(vd) from=1n to =2n 
+
+*let val1 = vd_min+0.1*(vd_max-vd_min)
+*let val2 = vd_min + 0.9*(vd_max - vd_min) 
+
+*meas tran trise TRIG v(vd) VAL=val1 RISE=1 TARG V(vd) VAL=val2  RISE=1 
+
+*meas tran tfall TRIG v(vd) VAL=val1 FALL=1 TARG V(vd) VAL=val2  FALL=1
+
+let der_vd = deriv(vd)
+*meas dc vil when der_vd= -1 FALL=1
+meas dc voh find vd when der_vd = -1 fall=last 
+meas dc vil find vg when vd=voh
+meas dc vol find vd when der_vd = -1 rise=last 
+meas dc vih find vg when vd=vol
+
+let nmo = voh - vol
+let nmi = vih - vil
+
+print 'nmo'
+print 'nmi'
+.endc
+
+.end
