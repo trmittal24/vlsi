@@ -17,23 +17,23 @@ v_g vg 0 dc 1 pulse(0 3 1n 0.1n 0.1n 2n 4n)
 
 
 .control
-foreach wid 10u   
-foreach res 30k 
+*foreach wid 10u   
+foreach res 10k 100k 1000k 
 alter r1 = $res
-alter m1 w = $wid
+*alter m1 w = $wid
 run
-end
+*end
 end
 .endc
 
 
 .control
 
-*foreach t 1 
+foreach t 1 2 3
 *setplot tran$t
 *plot vg vd
 setplot dc$t
-plot vg vd deriv(vd)
+plot vg vd 
 *plot -v_dd#branch
 end
 
