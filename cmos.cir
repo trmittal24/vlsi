@@ -1,0 +1,46 @@
+*CMOS inverter
+
+.include /home/vlsilab/UG_students_2018/t14y_tsmc_025_level3.txt
+
+mp vout vg vdd vdd cmosp w=2.5u l=1u
+mn vout vg 0 0 cmosn w=1u l=1u
+
+v_dd vdd 0 5
+*vin vg 0 5
+*.dc vin 0 5 0.1
+
+
+vin vg 0 dc 1 pulse(0 5 1n 0.05n 0.05n 2n 4n) 
+
+.tran 0.01ns 9n
+
+.control
+foreach wid 3.8285u 3.9u 4u
+alter mp w = $wid
+run 
+end
+.endc
+
+.control
+foreach t 1 2 3
+setplot tran$t
+plot vg vout 
+
+meas tran vd_max MAX v(vout) from=0n to =0.8n
+meas tran vd_min MIN v(vout) from=1n to =1.2n 
+
+let val1 = vd_min+0.1*(vd_max-vd_min)
+let val2 = vd_min + 0.9*(vd_max - vd_min) 
+
+meas tran trise TRIG v(vout) VAL=val1 RISE=1 TARG V(vout) VAL=val2  RISE=1 
+meas tran tfall TRIG v(vout) VAL=val1 FALL=1 TARG V(vout) VAL=val2  FALL=1
+
+*let der_vd = deriv(vout)
+*meas dc voh find vout when der_vd = -1 fall=last 
+*meas dc vil find vg when vout=2.5
+*meas dc vol find vout when der_vd = -1 rise=last 
+*meas dc vih find vg when vout=vol
+end
+.endc 
+
+.end
