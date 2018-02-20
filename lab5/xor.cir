@@ -1,11 +1,11 @@
-*Study of Cmos Gates 
+*Study of XOR Gates 
 
-.include /home/vlsilab/UG_students_2018/t14y_tsmc_025_level3.txt
+.include /home/tarun/ngspice/t14y_tsmc_025_level3.txt
 
-mpinv1 v_inax v_ina vdd vdd cmosp w=1u l=1u
+mpinv1 v_inax v_ina v_dd v_dd cmosp w=10u l=1u
 mninv1 v_inax v_ina 0 0 cmosn w=1u l=1u
 
-mpinv2 v_inbx v_inb vdd vdd cmosp w=1u l=1u
+mpinv2 v_inbx v_inb v_dd v_dd cmosp w=10u l=1u
 mninv2 v_inbx v_inb 0 0 cmosn w=1u l=1u
 
 mpa vx v_ina v_dd v_dd cmosp w=1u l=1u
@@ -15,31 +15,34 @@ mpax vxor v_inax vx v_dd cmosp w=1u l=1u
 
 mna vxor v_ina vy 0 cmosn w=1u l=1u
 mnbx vy v_inbx 0 0 cmosn w=1u l=1u
-mnb vxor v_inb vz 0 cmosn w=1u l=1u
-mnax vz v_inax 0 0 cmosn w=1u l=1u
+mnax vxor v_inax vz 0 cmosn w=1u l=1u
+mnb vz v_inb 0 0 cmosn w=1u l=1u
+
 
 //c1 vxor 0 0.1f
 
-v_dd vdd 0 5
-vina v_ina 0 5
-vinb v_inb 0 0
+vdd v_dd 0 5
+//vina v_ina 0 5
+//vinb v_inb 0 0
 vina v_ina  0 pulse(0 5 1n 0.1n 0.1n 2n 5n) 
 vinb v_inb  0 pulse(0 5 2n 0.1n 0.1n 2n 5n) 
 
 .dc vina 0 5 0.01
 .tran 0.01ns 5n 
+
 .control
 
-foreach iter 10u
-alter mpinv1 w = $iter
-alter mpinv2 w = $iter
-alter mp
+foreach iter 0.3u 0.25u 0.35u
+alter mna w = $iter
+alter mnax w = $iter
+alter mnb w = $iter
+alter mnbx w = $iter
 run
 end
 .endc
 
 .control
-foreach iter 1
+foreach iter 1 2 3
 *plot -v_dd#branch
 setplot tran$iter
 plot v_ina v_inb vxor v_inax v_inbx
