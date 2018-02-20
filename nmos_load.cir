@@ -69,10 +69,10 @@ plot vout
 let der_v = deriv(vout)
 meas dc vil find vin when der_v = -1 fall=last
 meas dc voh find vout when vin=vil rise=last
-meas dc vol find vin when der_v = -1 rise=last
-meas dc vol find vout when vin=vol rise=last
+meas dc vih find vin when der_v = -1 rise=last
+meas dc vol find vout when vin=vih rise=last
 
-let nmh = voh - vol
+let nmh = voh - vih
 let nml = vil - vol
 print 'nmh'
 print 'nml'
