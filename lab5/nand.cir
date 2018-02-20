@@ -29,7 +29,7 @@ end
 foreach iter 1  
 *plot -v_dd#branch
 setplot tran$iter
-plot v_ina v_inb vnand
+plot v_ina v_inb vnand vdrainb
 //plot -v_dd#branch
 meas tran vdmax1 MAX vnand from=0n to =1.8n
 meas tran vdmin MIN vnand from=2.2n to =2.7n
