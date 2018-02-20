@@ -1,0 +1,99 @@
+*Study of Cmos Gates 
+
+.include /home/vlsilab/UG_students_2018/t14y_tsmc_025_level3.txt
+
+mpinv1 v_inax v_ina vdd vdd cmosp w=1u l=1u
+mninv1 v_inax v_ina 0 0 cmosn w=1u l=1u
+
+mpinv2 v_inbx v_inb vdd vdd cmosp w=1u l=1u
+mninv2 v_inbx v_inb 0 0 cmosn w=1u l=1u
+
+mpa vx v_ina v_dd v_dd cmosp w=1u l=1u
+mpbx vx v_inbx v_dd  v_dd cmosp w=1u l=1u
+mpb vxor v_inb vx  v_dd cmosp w=1u l=1u
+mpax vxor v_inax vx v_dd cmosp w=1u l=1u
+
+mna vxor v_ina vy 0 cmosn w=1u l=1u
+mnbx vy v_inbx 0 0 cmosn w=1u l=1u
+mnb vxor v_inb vz 0 cmosn w=1u l=1u
+mnax vz v_inax 0 0 cmosn w=1u l=1u
+
+c1 vxor 0 0.1f
+
+v_dd vdd 0 5
+vina v_ina 0 5
+vinb v_inb 0 0
+vina v_ina  0 pulse(0 5 1n 0.1n 0.1n 2n 5n) 
+vinb v_inb  0 pulse(0 5 2n 0.1n 0.1n 2n 5n) 
+
+.dc vina 0 5 0.01
+.tran 0.01ns 5n 
+.control
+
+foreach iter 10u
+alter mpinv1 w = $iter
+alter mpinv2 w = $iter
+alter mp
+run
+end
+.endc
+
+.control
+foreach iter 1
+*plot -v_dd#branch
+setplot tran$iter
+plot v_ina v_inb vxor v_inax v_inbx
+//plot -v_dd#branch
+meas tran vdmax1 MAX vxor from=0n to =1.8n
+meas tran vdmin MIN vxor from=2.2n to =2.7n
+meas tran vdmax2 MAX vxor from=3.2n to =3.5n
+
+let rise1 = vdmin + 0.9*(vdmax1 - vdmin)
+let rise2 = vdmin + 0.1*(vdmax1 - vdmin) 
+let rise3 = vdmin + 0.9*(vdmax2 - vdmin)
+meas tran tfall trig vxor val=rise1 fall=1 targ vxor val=rise2 fall=1
+meas tran trise trig vxor val=rise2 rise=last targ vxor val=rise3 rise=last
+
+let v1=0.5*v(v_dd)
+meas tran t1 when v_inb=v1 cross=1
+meas tran t2 when v_inb=v1 cross=2
+meas tran i_int integ vdd#branch from=t1 to=t2
+let power=(0-i_int*5)/(t2-t1)
+print power
+
+meas tran iavg AVG vdd#branch from=0n to =4n
+let pow = iavg*5
+print 'pow'
+
+let v2 = (vdmax1 + vdmin)/2
+meas tran tx when v_inb = v2 cross=1
+meas tran ty when vxor = v2 cross=1
+
+let tphl = ty - tx
+print 'tphl'
+
+
+
+end
+.endc
+
+.control
+
+foreach iter 1 
+setplot dc$iter
+plot vxor
+
+let der_v = deriv(vxor)
+meas dc vil find v_ina when der_v = -1 fall=last
+meas dc voh find vxor when v_ina=vil rise=last
+meas dc vih find v_ina when der_v = -1 rise=last
+meas dc vol find vxor when v_ina=vih rise=last
+
+let nmh = voh - vih
+let nml = vil - vol
+print 'nmh'
+print 'nml'
+end
+.endc
+
+.end
