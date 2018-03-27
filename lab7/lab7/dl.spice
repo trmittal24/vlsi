@@ -1,0 +1,50 @@
+* SPICE3 file created from dl.ext - technology: scmos
+
+.include t14y_tsmc_025_level3.txt
+
+M1000 vdd c cn vdd pfet w=9u l=2u
++ ad=174p pd=78u as=62p ps=34u 
+M1001 a_n3_n14# cn d vdd pfet w=17u l=2u
++ ad=97p pd=50u as=93p ps=52u 
+M1002 vdd d a_7_n14# vdd pfet w=9u l=2u
++ ad=0p pd=0u as=40p ps=28u 
+M1003 z a_7_n14# vdd vdd pfet w=9u l=2u
++ ad=117p pd=44u as=0p ps=0u 
+M1004 a_48_n14# c z vdd pfet w=9u l=2u
++ ad=71p pd=36u as=0p ps=0u 
+M1005 vss c cn Gnd nfet w=5u l=2u
++ ad=114p pd=68u as=40p ps=28u 
+M1006 a_n3_n14# c d Gnd nfet w=13u l=2u
++ ad=75p pd=42u as=69p ps=44u 
+M1007 vss d a_7_n14# Gnd nfet w=5u l=2u
++ ad=0p pd=0u as=116p ps=54u 
+M1008 z a_7_n14# vss Gnd nfet w=5u l=2u
++ ad=69p pd=38u as=0p ps=0u 
+M1009 a_48_n14# cn z Gnd nfet w=5u l=2u
++ ad=40p pd=28u as=0p ps=0u 
+C0 cn vss 3.0fF
+C1 vdd c 23.3fF
+C2 vdd d 5.0fF
+C3 vdd a_7_n14# 10.4fF
+C4 vdd cn 8.4fF
+C5 vss 0  16.0fF
+C6 a_48_n14# 0  2.3fF
+C7 z 0  2.3fF
+C8 a_7_n14# 0  5.7fF
+C9 d 0  8.0fF
+C10 cn 0  24.1fF
+C11 c 0  15.4fF
+
+vdd vdd 0 5
+vss vss 0 0 
+v_gg_c c 0 PULSE(0 5 0n 0.1n 0.1n 25n 50n)
+v_gg_d d 0 PULSE(5 0 0n 0.1n 0.1n 50n 100n)
+
+
+.control
+ tran 0.01n 200n
+ plot (c + 10) (d + 5) z
+ 
+.endc
+
+.end
