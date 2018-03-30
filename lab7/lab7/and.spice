@@ -2,42 +2,39 @@
 
 .include t14y_tsmc_025_level3.txt
 
-//.option scale=1u
-
 M1000 vdd zn z vdd pfet w=8u l=2u
-+ ad=140 pd=68 as=36 ps=26 
++ ad=140p pd=68u as=36p ps=26u 
 M1001 zn a vdd vdd pfet w=8u l=2u
-+ ad=112 pd=44 as=0 ps=0 
++ ad=112p pd=44u as=0p ps=0u 
 M1002 vdd b zn vdd pfet w=8u l=2u
-+ ad=0 pd=0 as=0 ps=0 
-M1003 vss zn z 0 nfet w=3u l=2u
-+ ad=43 pd=34 as=19 ps=18 
-M1004 a_8_8# a vss 0 nfet w=3u l=2u
-+ ad=42 pd=34 as=0 ps=0 
-M1005 zn b a_8_8# 0 nfet w=3u l=2u
-+ ad=19 pd=18 as=0 ps=0 
-C0 vdd b 2.5fF
++ ad=0p pd=0u as=0p ps=0u 
+M1003 vss zn z Gnd nfet w=3u l=2u
++ ad=43p pd=34u as=19p ps=18u 
+M1004 a_8_8# a vss Gnd nfet w=3u l=2u
++ ad=42p pd=34u as=0p ps=0u 
+M1005 zn b a_8_8# Gnd nfet w=3u l=2u
++ ad=19p pd=18u as=0p ps=0u 
+C0 vdd zn 5.4fF
 C1 vdd a 3.5fF
-C2 vdd zn 5.4fF
+C2 vdd b 2.5fF
 C3 vss 0 7.2fF
 C4 z 0 2.7fF
 C5 b 0 3.2fF
 C6 a 0 2.9fF
 C7 zn 0 5.4fF
 
-
 v_dd vdd 0 5
 v_ss vss 0 0
 vina a  0 pulse(0 5 0n 0.1n 0.1n 50n 100n) 
-vinb b  0 pulse(0 5 50n 0.1n 0.1n 50n 100n) 
+vinb b  0 pulse(0 5 25n 0.1n 0.1n 50n 100n) 
 
 //.dc vina 0 5 0.01
-.tran 0.001ns 140n
+.tran 0.01ns 200n
 
 .control 
 run 
 setplot tran1
-plot zn z a b
+plot (zn +15) (z+10) (a +5) b
 .endc
 
-.end
+.end0

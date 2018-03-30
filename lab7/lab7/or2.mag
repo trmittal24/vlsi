@@ -1,8 +1,8 @@
 magic
 tech scmos
-timestamp 1520939803
+timestamp 1522412451
 << nwell >>
-rect 0 24 50 53
+rect 0 24 50 52
 << polysilicon >>
 rect 6 41 8 43
 rect 21 41 23 43
@@ -10,24 +10,24 @@ rect 41 34 43 43
 rect 6 20 8 24
 rect 21 21 23 24
 rect 6 16 7 20
-rect 6 12 8 16
-rect 21 12 23 17
+rect 6 6 8 16
+rect 21 6 23 17
 rect 41 21 43 24
-rect 41 12 43 17
-rect 6 0 8 4
-rect 21 2 23 4
-rect 41 2 43 4
+rect 41 6 43 17
+rect 6 -6 8 -2
+rect 21 -4 23 -2
+rect 41 -4 43 -2
 << ndiffusion >>
-rect 2 8 6 12
-rect 5 4 6 8
-rect 8 8 21 12
-rect 8 4 16 8
-rect 20 4 21 8
-rect 23 8 30 12
-rect 34 8 41 12
-rect 23 4 41 8
-rect 43 8 47 12
-rect 43 4 44 8
+rect 2 2 6 6
+rect 5 -2 6 2
+rect 8 2 21 6
+rect 8 -2 16 2
+rect 20 -2 21 2
+rect 23 2 30 6
+rect 34 2 41 6
+rect 23 -2 41 2
+rect 43 2 47 6
+rect 43 -2 44 2
 << pdiffusion >>
 rect 2 28 6 41
 rect 4 24 6 28
@@ -39,21 +39,22 @@ rect 23 24 41 34
 rect 43 28 48 34
 rect 43 24 46 28
 << metal1 >>
-rect 15 52 48 53
-rect 15 50 30 52
-rect 15 41 19 50
-rect 34 50 48 52
-rect 1 8 4 24
+rect 15 51 48 52
+rect 15 49 30 51
+rect 15 41 19 49
+rect 34 49 48 51
+rect 1 2 4 24
 rect 7 24 46 27
 rect 7 20 10 24
-rect 31 12 34 24
-rect 16 3 20 4
-rect 44 3 48 4
-rect 16 0 48 3
+rect 31 6 34 24
+rect 16 -3 20 -2
+rect 44 -3 48 -2
+rect 16 -5 48 -3
+rect 1 -8 48 -5
 << ntransistor >>
-rect 6 4 8 12
-rect 21 4 23 12
-rect 41 4 43 12
+rect 6 -2 8 6
+rect 21 -2 23 6
+rect 41 -2 43 6
 << ptransistor >>
 rect 6 24 8 41
 rect 21 24 23 41
@@ -63,21 +64,21 @@ rect 7 16 11 20
 rect 19 17 23 21
 rect 41 17 45 21
 << ndcontact >>
-rect 1 4 5 8
-rect 16 4 20 8
-rect 30 8 34 12
-rect 44 4 48 8
+rect 1 -2 5 2
+rect 16 -2 20 2
+rect 30 2 34 6
+rect 44 -2 48 2
 << pdcontact >>
 rect 0 24 4 28
 rect 15 36 19 41
 rect 46 24 50 28
 << nsubstratencontact >>
-rect 30 48 34 52
+rect 30 47 34 51
 << labels >>
-rlabel metal1 29 2 29 2 1 vss
-rlabel metal1 25 52 25 52 5 vdd
 rlabel polycontact 21 19 21 19 1 a
 rlabel polycontact 43 19 43 19 1 b
 rlabel metal1 32 19 32 19 1 zn
 rlabel metal1 3 17 3 17 3 z
+rlabel metal1 29 -4 29 -4 1 vss
+rlabel metal1 25 51 25 51 5 vdd
 << end >>

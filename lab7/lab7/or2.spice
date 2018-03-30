@@ -1,41 +1,38 @@
 * SPICE3 file created from or2.ext - technology: scmos
 .include t14y_tsmc_025_level3.txt
 
-.option scale=1u
-
-M1000 vdd zn z vdd pfet w=17 l=2
-+ ad=221 pd=60 as=76 ps=46 
-M1001 a_23_24# a vdd vdd pfet w=17 l=2
-+ ad=243 pd=70 as=0 ps=0 
-M1002 zn b a_23_24# vdd pfet w=10 l=2
-+ ad=58 pd=34 as=0 ps=0 
-M1003 vss zn z 0 nfet w=8 l=2
-+ ad=140 pd=68 as=36 ps=26 
-M1004 zn a vss 0 nfet w=8 l=2
-+ ad=144 pd=52 as=0 ps=0 
-M1005 vss b zn 0 nfet w=8 l=2
-+ ad=0 pd=0 as=0 ps=0 
-C0 zn a_23_24# 2.5fF
-C1 vdd b 2.6fF
+M1000 vdd zn z vdd pfet w=17u l=2u
++ ad=221p pd=60u as=76p ps=46u 
+M1001 a_23_24# a vdd vdd pfet w=17u l=2u
++ ad=243p pd=70u as=0p ps=0u 
+M1002 zn b a_23_24# vdd pfet w=10u l=2u
++ ad=58p pd=34u as=0p ps=0u 
+M1003 vss zn z Gnd nfet w=8u l=2u
++ ad=140p pd=68u as=36p ps=26u 
+M1004 zn a vss Gnd nfet w=8u l=2u
++ ad=144p pd=52u as=0p ps=0u 
+M1005 vss b zn Gnd nfet w=8u l=2u
++ ad=0p pd=0u as=0p ps=0u 
+C0 vdd b 2.6fF
+C1 zn a_23_24# 2.5fF
 C2 vdd zn 3.5fF
 C3 vss 0 4.7fF
 C4 b 0 4.4fF
 C5 a 0 4.4fF
 C6 zn 0 7.3fF
 
-
 v_dd vdd 0 5
 v_ss vss 0 0
-vina a  0 pulse(0 5 0n 0.1n 0.1n 10n 20n) 
-vinb b  0 pulse(0 5 5n 0.1n 0.1n 10n 20n) 
+vina a  0 pulse(0 5 0n 0.1n 0.1n 50n 100n) 
+vinb b  0 pulse(0 5 25n 0.1n 0.1n 50n 100n) 
 
 //.dc vina 0 5 0.01
-.tran 0.01ns 50n
+.tran 0.01ns 200n
 
 .control 
 run 
 setplot tran1
-plot zn z a b
+plot (zn +15) (z+10) (a +5) b
 .endc
 
-.end
+.end0

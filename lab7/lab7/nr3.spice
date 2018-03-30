@@ -1,0 +1,39 @@
+* SPICE3 file created from nr3.ext - technology: scmos
+
+.include t14y_tsmc_025_level3.txt
+
+M1000 a_n13_4# a vdd vdd pfet w=17u l=2u
++ ad=294p pd=76u as=92p ps=48u 
+M1001 a_10_4# b a_n13_4# vdd pfet w=10u l=2u
++ ad=200p pd=60u as=0p ps=0u 
+M1002 z c a_10_4# vdd pfet w=10u l=2u
++ ad=150p pd=50u as=0p ps=0u 
+M1003 z a vss Gnd nfet w=8u l=2u
++ ad=292p pd=108u as=208p ps=86u 
+M1004 vss b z Gnd nfet w=8u l=2u
++ ad=0p pd=0u as=0p ps=0u 
+M1005 z c vss Gnd nfet w=8u l=2u
++ ad=0p pd=0u as=0p ps=0u 
+C0 b vdd 3.9fF
+C1 c vdd 4.2fF
+C2 vdd a 2.2fF
+C3 vss 0 10.2fF
+C4 z 0 9.0fF
+C5 c 0 6.3fF
+C6 b 0 6.6fF
+C7 a 0 6.6fF
+
+v_dd vdd 0 5
+v_ss vss 0 0 
+v_gg_cp a 0 PULSE(0 5 0 0.1n 0.1n 15n 30n)
+v_gg_d b 0 PULSE(0 5 0 0.1n 0.1n 30n 60n)
+v_gg_d1 c 0 PULSE(0 5 0 0.1n 0.1n 60n 120n)
+
+.control
+ tran 0.01n 140n
+setplot tran1
+ plot (a + 15) (b + 10) (c + 5) (z) 
+ 
+.endc
+
+.end

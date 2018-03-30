@@ -1,39 +1,37 @@
 * SPICE3 file created from nor3.ext - technology: scmos
 .include t14y_tsmc_025_level3.txt
 
-
-M1000 a_n19_4# a vdd vdd pfet w=17u l=2u
+M1000 a_n19_1# a vdd vdd pfet w=17u l=2u
 + ad=327p pd=84u as=106p ps=48u 
-M1001 a_8_4# b a_n19_4# vdd pfet w=10u l=2u
+M1001 a_8_1# b a_n19_1# vdd pfet w=10u l=2u
 + ad=190p pd=58u as=0p ps=0u 
-M1002 z c a_8_4# vdd pfet w=10u l=2u
+M1002 z c a_8_1# vdd pfet w=10u l=2u
 + ad=114p pd=44u as=0p ps=0u 
-M1003 z a vss 0  nfet w=8u l=2u
+M1003 z a a_n28_n32# Gnd nfet w=8u l=2u
 + ad=292p pd=106u as=204p ps=84u 
-M1004 vss b z 0  nfet w=8u l=2u
+M1004 a_n28_n32# b z Gnd nfet w=8u l=2u
 + ad=0p pd=0u as=0p ps=0u 
-M1005 z c vss 0  nfet w=8u l=2u
+M1005 z c a_n28_n32# Gnd nfet w=8u l=2u
 + ad=0p pd=0u as=0p ps=0u 
-C0 vdd c 4.3fF
-C1 vdd a 2.6fF
-C2 vdd b 4.3fF
-C3 vss 0  21.4fF
-C4 z 0  9.9fF
-C5 c 0  8.6fF
-C6 b 0  8.3fF
-C7 a 0  8.3fF
+C0 a vdd 2.8fF
+C1 c vdd 4.5fF
+C2 b vdd 4.5fF
+C3 a_n28_n32# 0  12.3fF
+C4 z 0  9.0fF
+C5 c  0 7.1fF
+C6 b 0  7.1fF
+C7 a 0  6.8fF
 
 v_dd vdd 0 5
 v_ss vss 0 0 
-v_gg_cp a 0 PULSE(0 5 0 0.5n 0.5n 15n 30n)
-v_gg_d b 0 PULSE(0 5 0 0.5n 0.5n 30n 60n)
-v_gg_d1 c 0 PULSE(0 5 0 0.5n 0.5n 60n 120n)
+v_gg_cp a 0 PULSE(0 5 0 0.1n 0.1n 15n 30n)
+v_gg_d b 0 PULSE(0 5 0 0.1n 0.1n 30n 60n)
+v_gg_d1 c 0 PULSE(0 5 0 0.1n 0.1n 60n 120n)
 
 .control
- tran 0.01n 140n
-run
+ tran 0.01n 120n
 setplot tran1
- plot (a + 15) (b + 10) (c + 5) (z)
+ plot (a + 15) (b + 10) (c + 5) (z) 
  
 .endc
 

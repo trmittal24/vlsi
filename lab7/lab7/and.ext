@@ -11,11 +11,11 @@ node "b" 332 3176 22 6 p 0 0 0 0 64 64 0 0 0 0 0 0 16 16 0 0 0 0
 node "a" 368 2860 6 6 p 0 0 0 0 70 70 0 0 0 0 0 0 16 16 0 0 0 0
 node "zn" 482 5402 -9 6 p 19 18 112 44 68 66 0 0 0 0 0 0 184 124 0 0 0 0
 node "vdd" 4567 0 -14 19 nw 16 16 140 68 0 0 0 0 0 0 0 0 259 158 0 0 1215 144
-cap "zn" "a_8_8#" 1128
-cap "zn" "a" 180
-cap "a" "vdd" 3492
-cap "zn" "vdd" 5393
 cap "b" "vdd" 2462
+cap "zn" "a" 180
+cap "zn" "vdd" 5393
+cap "a" "vdd" 3492
+cap "a_8_8#" "zn" 1128
 device mosfet nfet 22 8 23 9 2 3 "Gnd!" "b" 4 0 "a_8_8#" 3 0 "zn" 3 0
 device mosfet nfet 6 8 7 9 2 3 "Gnd!" "a" 4 0 "vss" 3 0 "a_8_8#" 3 0
 device mosfet nfet -9 8 -8 9 2 3 "Gnd!" "zn" 4 0 "z" 3 0 "vss" 3 0
