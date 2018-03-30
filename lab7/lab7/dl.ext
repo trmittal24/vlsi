@@ -1,38 +1,36 @@
-timestamp 1522147712
+timestamp 1522391871
 version 7.5
 tech scmos
 style lambda=1.0(scna20_orb)
 scale 1000 1 100
 resistclasses 26670 59550 23860 19690 27260 2000000 49 26 2505830
 node "vss" 215 15980 -17 -14 ndiff 114 68 0 0 0 0 0 0 0 0 0 0 472 202 0 0 0 0
-node "a_48_n14#" 191 2256 48 -14 ndiff 40 28 71 36 0 0 0 0 0 0 0 0 119 84 0 0 0 0
 node "z" 164 2256 33 -14 ndiff 69 38 117 44 0 0 0 0 0 0 0 0 119 84 0 0 0 0
 node "a_7_n14#" 841 5707 7 -14 ndiff 116 54 40 28 110 108 0 0 0 0 0 0 178 120 0 0 0 0
-node "a_n3_n14#" 347 658 -3 -14 ndiff 75 42 97 50 0 0 0 0 0 0 0 0 80 58 0 0 0 0
-node "d" 1015 7984 -14 -6 ndiff 69 44 93 52 106 106 0 0 0 0 0 0 201 138 0 0 0 0
+node "d" 431 987 -14 -6 ndiff 69 44 93 52 0 0 0 0 0 0 0 0 74 54 0 0 0 0
+node "da" 1343 11832 -3 -14 ndiff 115 70 168 86 106 106 0 0 0 0 0 0 324 220 119 84 0 0
 node "cn" 1607 24150 -27 -12 ndc 40 28 62 34 252 248 0 0 0 0 0 0 246 168 0 0 0 0
 node "c" 2052 15442 -21 16 pc 0 0 0 0 352 352 0 0 0 0 0 0 16 16 0 0 0 0
 node "vdd" 7771 0 -28 8 nw 16 16 174 78 0 0 0 0 0 0 0 0 316 212 0 0 2640 236
-cap "vdd" "d" 4993
-cap "cn" "d" 603
-cap "vdd" "a_7_n14#" 10359
-cap "vdd" "a_48_n14#" 1833
-cap "d" "a_n3_n14#" 705
-cap "vdd" "cn" 8442
-cap "vdd" "a_n3_n14#" 987
-cap "c" "d" 180
+cap "da" "a_7_n14#" 1704
+cap "vdd" "da" 7108
+cap "cn" "d" 423
+cap "cn" "vdd" 8442
 cap "vdd" "z" 1833
-cap "cn" "a_n3_n14#" 1095
-cap "d" "a_7_n14#" 1590
+cap "c" "d" 180
+cap "c" "vdd" 23298
+cap "vdd" "a_7_n14#" 10359
+cap "vdd" "d" 705
+cap "cn" "da" 1389
+cap "z" "da" 405
 cap "cn" "vss" 3000
-cap "vdd" "c" 23298
-device mosfet nfet 46 -14 47 -13 2 5 "Gnd!" "cn" 4 0 "z" 5 0 "a_48_n14#" 5 0
+device mosfet nfet 46 -14 47 -13 2 5 "Gnd!" "cn" 4 0 "z" 5 0 "da" 5 0
 device mosfet nfet 31 -14 32 -13 2 5 "Gnd!" "a_7_n14#" 4 0 "vss" 5 0 "z" 5 0
-device mosfet nfet 17 -14 18 -13 2 5 "Gnd!" "d" 4 0 "a_7_n14#" 5 0 "vss" 5 0
-device mosfet nfet -5 -14 -4 -13 2 13 "Gnd!" "c" 4 0 "d" 13 0 "a_n3_n14#" 13 0
+device mosfet nfet 17 -14 18 -13 2 5 "Gnd!" "da" 4 0 "a_7_n14#" 5 0 "vss" 5 0
+device mosfet nfet -5 -14 -4 -13 2 13 "Gnd!" "c" 4 0 "d" 13 0 "da" 13 0
 device mosfet nfet -19 -14 -18 -13 2 5 "Gnd!" "c" 4 0 "cn" 5 0 "vss" 5 0
-device mosfet pfet 46 21 47 22 2 9 "vdd" "c" 4 0 "z" 9 0 "a_48_n14#" 9 0
+device mosfet pfet 46 21 47 22 2 9 "vdd" "c" 4 0 "z" 9 0 "da" 9 0
 device mosfet pfet 31 21 32 22 2 9 "vdd" "a_7_n14#" 4 0 "vdd" 9 0 "z" 9 0
-device mosfet pfet 17 21 18 22 2 9 "vdd" "d" 4 0 "a_7_n14#" 9 0 "vdd" 9 0
-device mosfet pfet -5 13 -4 14 2 17 "vdd" "cn" 4 0 "d" 17 0 "a_n3_n14#" 17 0
+device mosfet pfet 17 21 18 22 2 9 "vdd" "da" 4 0 "a_7_n14#" 9 0 "vdd" 9 0
+device mosfet pfet -5 13 -4 14 2 17 "vdd" "cn" 4 0 "d" 17 0 "da" 17 0
 device mosfet pfet -19 24 -18 25 2 9 "vdd" "c" 4 0 "cn" 9 0 "vdd" 9 0
