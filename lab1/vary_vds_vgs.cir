@@ -1,6 +1,6 @@
 *nmos characteristics
 
-.include /home/vlsilab/UG_students_2018/t14y_tsmc_025_level3.txt
+.include /home/barun/vlsi/t14y_tsmc_025_level3.txt
 
 * netlist
 * m_instance_name drain_node gate_node source_node bulk_substrate_node model_name L=length W=width

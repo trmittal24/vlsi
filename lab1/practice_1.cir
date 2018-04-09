@@ -1,0 +1,27 @@
+*First Experiment 
+
+.include /home/barun/vlsi/t14y_tsmc_025_level3.txt
+ 
+R1 v_dd v_ds 10K
+M1 v_ds v_gs 0 0 cmosn w = 1u l = 1u vto = -0.6
+
+vdd v_dd 0 5
+vin v_gs 0 5
+
+//.TEMP 310K
+.dc vin 0 5 0.01 vdd 0 5 1.1
+.control
+
+foreach t 1
+run
+end
+.endc 
+
+.control
+foreach t 1
+setplot dc$t 
+plot -vdd#branch 
+end
+.endc
+
+.end	
