@@ -1,0 +1,83 @@
+timestamp 1521537788
+version 7.5
+tech scmos
+style lambda=1.0(scna20_orb)
+scale 1000 1 100
+resistclasses 26670 59550 23860 19690 27260 2000000 49 26 2505830
+use ../lab6/cmos_inverter cmos_inverter_0 1 0 -15 0 1 15
+use nd2 nd2_0 1 0 -10 0 1 -2
+use nd2 nd2_3 -1 0 41 0 -1 2
+use nd2 nd2_1 1 0 26 0 1 -2
+use nd2 nd2_2 -1 0 77 0 -1 2
+node "m1_26_n40#" 0 0 26 -40 m1 0 0 0 0 0 0 0 0 0 0 0 0 36 30 0 0 0 0
+node "m1_29_n21#" 0 1598 29 -21 m1 0 0 0 0 0 0 0 0 0 0 0 0 60 38 0 0 0 0
+node "m1_55_n1#" 0 2256 55 -1 m1 0 0 0 0 0 0 0 0 0 0 0 0 48 32 0 0 0 0
+node "m1_28_0#" 0 3478 28 0 m1 0 0 0 0 0 0 0 0 0 0 0 0 74 40 0 0 0 0
+node "m1_n23_n3#" 0 9118 -23 -3 m1 0 0 0 0 0 0 0 0 0 0 0 0 194 82 0 0 0 0
+node "m1_35_13#" 1 4405 35 13 v 0 0 0 0 0 0 0 0 0 0 0 0 44 38 155 108 0 0
+node "m1_61_17#" 1 3837 61 17 m1 0 0 0 0 0 0 0 0 0 0 0 0 40 36 139 96 0 0
+node "m1_15_n16#" 1 4197 15 -16 v 0 0 0 0 0 0 0 0 0 0 0 0 52 42 155 108 0 0
+node "m1_0_19#" 1 3123 0 19 v 0 0 0 0 0 0 0 0 0 0 0 0 40 36 227 152 0 0
+node "m1_n15_18#" 1 3509 -15 18 m1 0 0 0 0 0 0 0 0 0 0 0 0 52 42 140 98 0 0
+node "m1_n25_15#" 1 5471 -25 15 v 0 0 0 0 0 0 0 0 0 0 0 0 40 36 221 152 0 0
+node "m1_30_37#" 0 0 30 37 m1 0 0 0 0 0 0 0 0 0 0 0 0 36 30 0 0 0 0
+node "m1_n31_n40#" 3 18894 -31 -40 m1 0 0 0 0 0 0 0 0 0 0 0 0 483 328 0 0 0 0
+node "w_26_n40#" 3289 0 26 -40 nw 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 336 74
+node "w_26_19#" 2625 0 26 19 nw 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 462 86
+node "w_n23_19#" 3222 0 -23 19 nw 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 567 96
+cap "w_26_19#" "m1_15_n16#" 470
+cap "w_n23_19#" "m1_0_19#" 1208
+cap "w_26_n40#" "m1_26_n40#" 1692
+cap "w_26_19#" "m1_0_19#" 1254
+cap "m1_30_37#" "w_26_19#" 1692
+cap "m1_28_0#" "m1_15_n16#" 270
+cap "w_n23_19#" "m1_n15_18#" 987
+cap "w_26_n40#" "m1_29_n21#" 1222
+cap "m1_55_n1#" "m1_61_17#" 180
+cap "w_n23_19#" "m1_n31_n40#" 3807
+cap "cmos_inverter_0/source" "cmos_inverter_0/vout" 564
+cap "nd2_3/vdd" "nd2_3/z" -282
+cap "nd2_1/z" "cmos_inverter_0/ground" 810
+cap "cmos_inverter_0/source" "nd2_1/b" 470
+cap "nd2_0/b" "nd2_3/a_18_10#" 198
+cap "cmos_inverter_0/vin" "nd2_0/z" 448
+cap "nd2_1/z" "nd2_2/a_18_10#" 198
+cap "nd2_0/b" "cmos_inverter_0/ground" 2970
+cap "cmos_inverter_0/vin" "nd2_0/a_18_10#" 374
+cap "nd2_0/z" "nd2_1/z" 1311
+cap "nd2_3/vdd" "nd2_3/b" 470
+cap "cmos_inverter_0/source" "cmos_inverter_0/vin" 381
+cap "nd2_1/b" "cmos_inverter_0/ground" 90
+cap "cmos_inverter_0/source" "nd2_0/z" 4
+merge "nd2_2/vdd" "nd2_1/vdd" -3948 0 0 0 0 0 0 0 0 0 0 0 0 -126 -126 0 0 -792 -318
+merge "nd2_1/vdd" "nd2_3/vdd"
+merge "nd2_3/vdd" "w_26_n40#"
+merge "w_26_n40#" "nd2_0/vdd"
+merge "nd2_0/vdd" "cmos_inverter_0/w_n8_8#"
+merge "cmos_inverter_0/w_n8_8#" "w_n23_19#"
+merge "w_n23_19#" "w_26_19#"
+merge "w_26_19#" "cmos_inverter_0/source"
+merge "cmos_inverter_0/source" "m1_n31_n40#"
+merge "m1_n31_n40#" "m1_30_37#"
+merge "m1_30_37#" "m1_26_n40#"
+merge "nd2_2/z" "nd2_1/b" -1224 0 0 0 0 0 0 0 0 0 0 0 0 -12 -22 0 0 0 0
+merge "nd2_1/b" "m1_61_17#"
+merge "nd2_2/b" "nd2_3/z" -658 0 0 0 0 0 0 0 0 0 0 0 0 -20 -26 0 0 0 0
+merge "nd2_3/z" "m1_29_n21#"
+merge "nd2_2/vss" "nd2_1/vss" -6533 0 0 0 0 0 0 0 0 0 0 0 0 -139 -234 0 0 0 0
+merge "nd2_1/vss" "m1_55_n1#"
+merge "m1_55_n1#" "nd2_3/vss"
+merge "nd2_3/vss" "nd2_0/vss"
+merge "nd2_0/vss" "m1_28_0#"
+merge "m1_28_0#" "cmos_inverter_0/ground"
+merge "cmos_inverter_0/ground" "m1_n23_n3#"
+merge "nd2_3/a" "nd2_0/b" -1989 0 0 0 0 0 0 0 0 0 0 0 0 -12 -22 0 0 0 0
+merge "nd2_0/b" "m1_15_n16#"
+merge "nd2_3/b" "cmos_inverter_0/vout" -1598 0 0 0 0 0 0 0 0 0 0 0 0 -12 -22 0 0 0 0
+merge "cmos_inverter_0/vout" "m1_n25_15#"
+merge "nd2_2/a" "nd2_1/z" -1681 0 0 0 0 0 0 0 0 0 0 0 0 -20 -26 0 0 0 0
+merge "nd2_1/z" "m1_35_13#"
+merge "nd2_1/a" "nd2_0/z" -2012 0 0 0 0 0 0 0 0 0 0 0 0 -19 -26 0 0 0 0
+merge "nd2_0/z" "m1_0_19#"
+merge "nd2_0/a" "cmos_inverter_0/vin" -1534 0 0 0 0 0 0 0 0 0 0 0 0 -12 -22 0 0 0 0
+merge "cmos_inverter_0/vin" "m1_n15_18#"

@@ -1,0 +1,49 @@
+| units: 100 tech: scmos format: MIT
+p nd2_1/z nd2_0/vdd nd2_1/b 2 7 60 -25
+p nd2_3/z nd2_1/b nd2_0/vdd 2 7 44 -25
+n nd2_1/z nd2_1/b nd2_2/a_18_10# 2 3 60 -9
+n nd2_3/z nd2_2/a_18_10# nd2_0/vss 2 3 44 -9
+p nd2_0/z nd2_0/vdd nd2_1/z 2 7 42 24
+p nd2_1/b nd2_1/z nd2_0/vdd 2 7 58 24
+n nd2_0/z nd2_1/z nd2_1/a_18_10# 2 3 42 8
+n nd2_1/b nd2_1/a_18_10# nd2_0/vss 2 3 58 8
+p nd2_0/b nd2_0/vdd nd2_3/z 2 7 24 -25
+p nd2_3/b nd2_3/z nd2_0/vdd 2 7 8 -25
+n nd2_0/b nd2_3/z nd2_3/a_18_10# 2 3 24 -9
+n nd2_3/b nd2_3/a_18_10# nd2_0/vss 2 3 8 -9
+p nd2_0/a nd2_0/vdd nd2_0/z 2 7 6 24
+p nd2_0/b nd2_0/z nd2_0/vdd 2 7 22 24
+n nd2_0/a nd2_0/z nd2_0/a_18_10# 2 3 6 8
+n nd2_0/b nd2_0/a_18_10# nd2_0/vss 2 3 22 8
+p nd2_0/a nd2_3/b nd2_0/vdd 2 3 -18 28
+n nd2_0/a nd2_3/b nd2_0/vss 2 3 -18 10
+C nd2_0/vdd nd2_3/b 4.2
+C nd2_0/vdd nd2_3/z 5.8
+C nd2_0/vdd nd2_0/a 5.5
+C nd2_0/vdd nd2_0/b 5.1
+C nd2_0/vss nd2_0/b 3.2
+C nd2_0/vdd nd2_0/z 7.1
+C nd2_0/vdd nd2_1/z 4.6
+C nd2_0/vdd nd2_1/b 5.4
+R nd2_0/a_18_10# 124
+C nd2_0/a GND 10.2
+R nd2_0/a 669
+R nd2_3/a_18_10# 124
+C nd2_3/b GND 8.3
+R nd2_3/b 465
+C nd2_0/b GND 9.2
+R nd2_0/b 692
+R nd2_1/a_18_10# 124
+C nd2_0/z GND 5.9
+R nd2_0/z 496
+C nd2_0/vss GND 29.2
+R nd2_0/vss 515
+R nd2_2/a_18_10# 124
+C nd2_1/b GND 6.8
+R nd2_1/b 496
+C nd2_3/z GND 5.1
+R nd2_3/z 495
+C nd2_1/z GND 7.5
+R nd2_1/z 496
+C nd2_0/vdd GND 15.9
+R nd2_0/vdd 27633

@@ -1,0 +1,72 @@
+* SPICE3 file created from dlatch.ext - technology: scmos
+
+.include t14y_tsmc_025_level3.txt
+
+M1000 nd2_1_b nd2_1_z nd2_0_vdd nd2_0_vdd pfet w=7u l=2u
++ ad=98p pd=42u as=299p ps=226u 
+M1001 nd2_0_vdd nd2_3_z nd2_1_b nd2_0_vdd pfet w=7u l=2u
++ ad=0p pd=0u as=0p ps=0u 
+M1002 nd2_2_a_18_10# nd2_1_z nd2_1_b 0 nfet w=3u l=2u
++ ad=42p pd=34u as=22p ps=20u 
+M1003 nd2_0_vss nd2_3_z nd2_2_a_18_10# 0 nfet w=3u l=2u
++ ad=95p pd=90u as=0p ps=0u 
+M1004 nd2_1_z nd2_0_z nd2_0_vdd nd2_0_vdd pfet w=7u l=2u
++ ad=98p pd=42u as=0p ps=0u 
+M1005 nd2_0_vdd nd2_1_b nd2_1_z nd2_0_vdd pfet w=7u l=2u
++ ad=0p pd=0u as=0p ps=0u 
+M1006 nd2_1_a_18_10# nd2_0_z nd2_1_z 0 nfet w=3u l=2u
++ ad=42p pd=34u as=22p ps=20u 
+M1007 nd2_0_vss nd2_1_b nd2_1_a_18_10# 0 nfet w=3u l=2u
++ ad=0p pd=0u as=0p ps=0u 
+M1008 nd2_3_z nd2_0_b nd2_0_vdd nd2_0_vdd pfet w=7u l=2u
++ ad=98p pd=42u as=0p ps=0u 
+M1009 nd2_0_vdd nd2_3_b nd2_3_z nd2_0_vdd pfet w=7u l=2u
++ ad=0p pd=0u as=0p ps=0u 
+M1010 nd2_3_a_18_10# nd2_0_b nd2_3_z 0 nfet w=3u l=2u
++ ad=42p pd=34u as=22p ps=20u 
+M1011 nd2_0_vss nd2_3_b nd2_3_a_18_10# 0 nfet w=3u l=2u
++ ad=0p pd=0u as=0p ps=0u 
+M1012 nd2_0_z nd2_0_a nd2_0_vdd nd2_0_vdd pfet w=7u l=2u
++ ad=98p pd=42u as=0p ps=0u 
+M1013 nd2_0_vdd nd2_0_b nd2_0_z nd2_0_vdd pfet w=7u l=2u
++ ad=0p pd=0u as=0p ps=0u 
+M1014 nd2_0_a_18_10# nd2_0_a nd2_0_z 0 nfet w=3u l=2u
++ ad=42p pd=34u as=22p ps=20u 
+M1015 nd2_0_vss nd2_0_b nd2_0_a_18_10# 0 nfet w=3u l=2u
++ ad=0p pd=0u as=0p ps=0u 
+M1016 nd2_0_vdd nd2_0_a nd2_3_b nd2_0_vdd pfet w=3u l=2u
++ ad=0p pd=0u as=19p ps=18u 
+M1017 nd2_0_vss nd2_0_a nd2_3_b 0 nfet w=3u l=2u
++ ad=0p pd=0u as=19p ps=18u 
+C0 nd2_0_vdd nd2_0_a 5.5fF
+C1 nd2_0_vdd nd2_0_b 5.1fF
+C2 nd2_0_vdd nd2_0_z 7.1fF
+C3 nd2_0_vdd nd2_1_z 4.6fF
+C4 nd2_0_vdd nd2_1_b 5.4fF
+C5 nd2_0_vdd nd2_3_b 4.2fF
+C6 nd2_0_vss nd2_0_b 3.2fF
+C7 nd2_0_vdd nd2_3_z 5.8fF
+C8 nd2_0_a 0 10.2fF
+C9 nd2_3_b 0 8.3fF
+C10 nd2_0_b 0 9.2fF
+C11 nd2_0_z 0 5.9fF
+C12 nd2_0_vss 0 29.2fF
+C13 nd2_1_b 0 6.8fF
+C14 nd2_3_z 0 5.1fF
+C15 nd2_1_z 0 7.5fF
+C16 nd2_0_vdd 0 15.9fF
+
+
+vdd nd2_0_vdd 0 5
+vss nd2_0_vss 0 0 
+v_gg_cp nd2_0_b 0 PULSE(0 5 5n 0.1n 0.1n 15n 30n)
+v_gg_d nd2_0_a 0 PULSE(0 5 12ns 0.1n 0.1n 15n 50n)
+
+
+.control
+ tran 0.01n 120n
+ plot (nd2_0_b + 10) (nd2_0_a + 5) nd2_1_z
+ 
+.endc
+
+.end

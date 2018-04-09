@@ -8,12 +8,12 @@ r1 vdd vd 100k
 v_dd vdd 0 3
 *v_g vg 0 3
 
-v_g vg 0 dc 1 pulse(0 3 1n 0.1n 0.1n 2n 4n) 
+v_g vg 0 pulse(0 3 1n 0.1n 0.1n 2n 4n) 
 .dc v_g 0 3 0.1
-*.tran 0.01ns 4n
-*.meas tran vd_max MAX v(vd) from=0n to =4n
-*.meas tran vd_min MIN v(vd) from=0n to =4n
-*.meas tran trise TRIG v(vd) VAL=0 RISE=1 TARG V(vd) VAL=2.7 RISE=1 
+.tran 0.01ns 4n
+.meas tran vd_max MAX v(vd) from=0n to =4n
+.meas tran vd_min MIN v(vd) from=0n to =4n
+.meas tran trise TRIG v(vd) VAL=0 RISE=1 TARG V(vd) VAL=2.7 RISE=1 
 
 
 .control
@@ -30,8 +30,8 @@ end
 .control
 
 foreach t 1 2 3
-*setplot tran$t
-*plot vg vd
+setplot tran$t
+plot vg vd
 setplot dc$t
 plot vg vd deriv(vd)
 *plot -v_dd#branch

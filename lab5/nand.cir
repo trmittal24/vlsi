@@ -1,0 +1,86 @@
+*Study of Cmos Gates 
+
+.include /home/vlsilab/UG_students_2018/t14y_tsmc_025_level3.txt
+
+mpa vnand v_ina v_dd v_dd cmosp w=2u l=1u
+mpb vnand v_inb v_dd v_dd cmosp w=2u l=1u
+mna vnand v_ina vdrainb 0 cmosn w=1u l=1u
+mnb vdrainb v_inb 0 0 cmosn w=1u l=1u
+c1 vnand 0 0.1f
+
+vdd v_dd 0 5
+vina v_ina 0 5
+vinb v_inb 0 0
+vina v_ina  0 pulse(0 5 1n 0.1n 0.1n 2n 5n) 
+vinb v_inb  0 pulse(0 5 2n 0.1n 0.1n 2n 5n) 
+
+.dc vina 0 5 0.01
+.tran 0.01ns 5n 
+.control
+
+foreach iter 0.67u 
+alter mna w = $iter
+alter mnb w = $iter
+run
+end
+.endc
+
+.control
+foreach iter 1  
+*plot -v_dd#branch
+setplot tran$iter
+plot v_ina v_inb vnand vdrainb
+//plot -v_dd#branch
+meas tran vdmax1 MAX vnand from=0n to =1.8n
+meas tran vdmin MIN vnand from=2.2n to =2.7n
+meas tran vdmax2 MAX vnand from=3.2n to =3.5n
+
+let rise1 = vdmin + 0.9*(vdmax1 - vdmin)
+let rise2 = vdmin + 0.1*(vdmax1 - vdmin) 
+let rise3 = vdmin + 0.9*(vdmax2 - vdmin)
+meas tran tfall trig vnand val=rise1 fall=1 targ vnand val=rise2 fall=1
+meas tran trise trig vnand val=rise2 rise=last targ vnand val=rise3 rise=last
+
+let v1=0.5*v(v_dd)
+meas tran t1 when v_inb=v1 cross=1
+meas tran t2 when v_inb=v1 cross=2
+meas tran i_int integ vdd#branch from=t1 to=t2
+let power=(0-i_int*5)/(t2-t1)
+print power
+
+meas tran iavg AVG vdd#branch from=0n to =4n
+let pow = iavg*5
+print 'pow'
+
+let v2 = (vdmax1 + vdmin)/2
+meas tran tx when v_inb = v2 cross=1
+meas tran ty when vnand = v2 cross=1
+
+let tphl = ty - tx
+print 'tphl'
+
+
+
+end
+.endc
+
+.control
+
+foreach iter 1 
+setplot dc$iter
+plot vnand
+
+let der_v = deriv(vnand)
+meas dc vil find v_ina when der_v = -1 fall=last
+meas dc voh find vnand when v_ina=vil rise=last
+meas dc vih find v_ina when der_v = -1 rise=last
+meas dc vol find vnand when v_ina=vih rise=last
+
+let nmh = voh - vih
+let nml = vil - vol
+print 'nmh'
+print 'nml'
+end
+.endc
+
+.end

@@ -1,0 +1,41 @@
+* SPICE3 file created from or2.ext - technology: scmos
+.include t14y_tsmc_025_level3.txt
+
+.option scale=1u
+
+M1000 vdd zn z vdd pfet w=17 l=2
++ ad=221 pd=60 as=76 ps=46 
+M1001 a_23_24# a vdd vdd pfet w=17 l=2
++ ad=243 pd=70 as=0 ps=0 
+M1002 zn b a_23_24# vdd pfet w=10 l=2
++ ad=58 pd=34 as=0 ps=0 
+M1003 vss zn z Gnd nfet w=8 l=2
++ ad=140 pd=68 as=36 ps=26 
+M1004 zn a vss Gnd nfet w=8 l=2
++ ad=144 pd=52 as=0 ps=0 
+M1005 vss b zn Gnd nfet w=8 l=2
++ ad=0 pd=0 as=0 ps=0 
+C0 zn a_23_24# 2.5fF
+C1 vdd b 2.6fF
+C2 vdd zn 3.5fF
+C3 vss gnd! 4.7fF
+C4 b gnd! 4.4fF
+C5 a gnd! 4.4fF
+C6 zn gnd! 7.3fF
+
+
+v_dd vdd 0 5
+v_ss vss 0 0
+vina a  0 pulse(0 5 0n 0.1n 0.1n 10n 20n) 
+vinb b  0 pulse(0 5 5n 0.1n 0.1n 10n 20n) 
+
+//.dc vina 0 5 0.01
+.tran 0.01ns 50n
+
+.control 
+run 
+setplot tran1
+plot  z a b
+.endc
+
+.end
