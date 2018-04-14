@@ -1,0 +1,152 @@
+
+CASE 1
+mpa mpb w=2u l=1u
+mna mnb w=0.44u l=1u
+
+trise = 2.069648e-10s = 0.2069648 ns
+tfall = 2.052723e-10s = 0.2052723 ns
+
+vil = 2.0688 v
+voh = 4.2368 v
+vih = 3.020583 v 
+vol = 0.4929244 v 
+
+nmh = 1.21626
+nml = 1.57594 
+
+// t propagation is yet to be calculated due to clearance of a doubt :p 
+
+CASE 2 
+mpa mpb w=2u l=1u
+mna mnb w=1u l=1u
+
+trise = 1.028901e-10s = 0.1028901 ns
+tfall = 2.179223e-10s = 0.2179223 ns
+
+vil = 1.130939 v
+voh = 4.607064 v
+vih = 2.347362 v 
+vol = 0.5251460 v 
+
+nmh = 2.260602 v 
+nml = 0.6057930 v 
+
+CASE 3 
+mpa mpb w=2u l=1u
+mna mnb w=2u l=1u
+
+trise = 2.388368e-10s = 0.2388368 ns
+tfall = 6.661000-11s = 0.06661000 ns
+
+vil = 0.7118390 v
+voh = 4.832508 v
+vih = 1.779605 v 
+vol = 0.5020251 v 
+
+nmh = 3.052903 v 
+nml = 0.2098139 v 
+
+CASE 4 
+mpa mpb w=2u l=1u
+mna mnb w=5u l=1u
+
+trise = 3.016850e-10s = 0.3016840 ns
+tfall = 5.582796e-11s = 0.05582796 ns
+
+vil = 0.5065056 v
+voh = 4.941352 v
+vih = 1.232456 v 
+vol = 0.3493686 v 
+
+nmh = 3.708896 v 
+nml = 0.1572270 v 
+
+CASE 5 
+mpa mpb w=2u l=1u
+mna mnb w=0.7u l=1u
+
+trise = 2.107812e-10s = 0.2107812 ns
+tfall = 1.354570e-10s = 0.1354570 ns
+
+vil = 1.502648 v
+voh = 4.427324 v
+vih = 2.635014 v 
+vol = 0.5268198 v 
+
+nmh = 1.792310 v 
+nml = 0.9758282 v 
+
+CASE 6 
+mpa mpb w=0.44u l=1u
+mna mnb w=1u l=1u
+
+trise = 2.985426e-10s = 0.2985426 ns
+tfall = 5.594168e-11s = 0.05594168 ns
+
+vil = 0.5205706 v
+voh = 4.934193 v
+vih = 1.279794 v 
+vol = 0.3658420 v 
+
+nmh = 3.654399 v 
+nml = 0.1547286 v 
+
+CASE 7
+mpa mpb w=0.7u l=1u
+mna mnb w=1u l=1u
+
+trise = 2.592273e-10s = 0.2592273 ns
+tfall = 5.858067e-11s = 0.05858067 ns
+
+vil = 0.6077070 v
+voh = 4.888334 v
+vih = 1.540571 v 
+vol = 0.4472357 v 
+
+nmh = 3.347763 v 
+nml = 0.1604713 v 
+
+CASE 8 
+mpa mpb w=1u l=1u
+mna mnb w=1u l=1u
+
+trise = 2.393430e-10s = 0.2393430 ns
+tfall = 6.702025e-11s = 0.06702025 ns
+
+vil = 0.717341 v
+voh = 4.829709 v
+vih = 1.787131 v 
+vol = 0.5029224 v 
+
+nmh = 3.042578 v 
+nml = 0.2142117 v 
+
+CASE 9 
+mpa mpb w=2u l=1u
+mna mnb w=1u l=1u
+
+trise = 2.179223e-10s = 0.2179223 ns
+tfall = 1.028901e-10s = 0.1028901 ns
+
+vil = 1.130939 v
+voh = 4.607964 v
+vih = 2.347362 v 
+vol = 0.5251460 v 
+
+nmh = 2.260606 v 
+nml = 0.6057930 v 
+
+CASE 10 
+mpa mpb w=5u l=1u
+mna mnb w=1u l=1u
+
+trise = 2.087447e-10s = 0.2087447 ns
+tfall = 2.179185e-10s = 0.2179185 ns
+
+vil = 2.131496 v
+voh = 4.219995 v
+vih = 3.067884 v 
+vol = 0.4862624 v 
+
+nmh = 1.152111 v 
+nml = 1.645234 v 

@@ -1,5 +1,6 @@
 *Study of Cmos Gates 
 
+//.include /home/barun/vlsi/t14y_tsmc_025_level3.txt
 .include /home/vlsilab/UG_students_2018/t14y_tsmc_025_level3.txt
 
 mpa vatob v_ina v_dd v_dd cmosp w=2u l=1u
@@ -18,8 +19,9 @@ vinb v_inb  0 pulse(0 5 2n 0.1n 0.1n 2n 5n)
 .tran 0.01ns 5n
  
 .control
+        //0.44u 
 
-foreach iter 0.44u
+foreach iter 0.44u   
 alter mna w = $iter
 alter mnb w = $iter
 run
@@ -30,7 +32,7 @@ end
 foreach iter 1
 *plot -v_dd#branch
 setplot tran$iter
-plot v_ina v_inb vnor
+plot v_ina v_inb+5 vnor+10
 //plot -v_dd#branch
 meas tran vdmax1 MAX vnor from=0n to =0.9n
 meas tran vdmin MIN vnor from=2.2n to =2.7n
