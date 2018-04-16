@@ -1,7 +1,8 @@
 *Study of Cmos Gates 
 
-//.include /home/barun/vlsi/t14y_tsmc_025_level3.txt
-.include /home/vlsilab/UG_students_2018/t14y_tsmc_025_level3.txt
+
+.include /home/tarun/ngspice/t14y_tsmc_025_level3.txt
+
 
 mpa vatob v_ina v_dd v_dd cmosp w=2u l=1u
 mpb vnor v_inb vatob v_dd cmosp w=2u l=1u
@@ -12,8 +13,8 @@ c1 vnor 0 0.1f
 vdd v_dd 0 5
 vina v_ina 0 5
 vinb v_inb 0 0
-vina v_ina  0 pulse(0 5 1n 0.1n 0.1n 2n 5n) 
-vinb v_inb  0 pulse(0 5 2n 0.1n 0.1n 2n 5n) 
+vina v_ina  0 pulse(0 5 2n 0.1n 0.1n 2n 5n) 
+vinb v_inb  0 pulse(0 5 1n 0.1n 0.1n 2n 5n) 
 
 .dc vina 0 5 0.01
 .tran 0.01ns 5n
@@ -56,7 +57,7 @@ let pow = iavg*5
 print 'pow'
 
 let v2 = (vdmax1 + vdmin)/2
-meas tran tx when v_inb = v2 cross=1
+meas tran tx when v_ina = v2 cross=1
 meas tran ty when vnor = v2 cross=1
 
 let tphl = ty - tx

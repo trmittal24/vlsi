@@ -28,11 +28,11 @@ C7 zn 0 5.4fF
 
 v_dd vdd 0 5
 v_ss vss 0 0
-vina a  0 pulse(0 5 0n 0.1n 0.1n 50n 100n) 
-vinb b  0 pulse(0 5 50n 0.1n 0.1n 50n 100n) 
+vina a  0 pulse(0 5 0n 0.1n 0.1n 10n 20n) 
+vinb b  0 pulse(0 5 5n 0.1n 0.1n 10n 20n) 
 
 //.dc vina 0 5 0.01
-.tran 0.001ns 140n
+.tran 0.01ns 50n
 
 .control 
 run 
