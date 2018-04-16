@@ -5,7 +5,7 @@
 
 
 mpa vatob v_ina v_dd v_dd cmosp w=2u l=1u
-mpb vnor v_inb vatob v_dd cmosp w=2u l=1u
+mpb vnor v_inb vatob vatob cmosp w=2u l=1u
 mna vnor v_ina 0 0 cmosn w=1u l=1u
 mnb vnor v_inb 0 0 cmosn w=1u l=1u
 c1 vnor 0 0.1f
@@ -57,13 +57,20 @@ let pow = iavg*5
 print 'pow'
 
 let v2 = (vdmax1 + vdmin)/2
-meas tran tx when v_ina = v2 cross=1
+meas tran tx when v_inb = v2 cross=1
 meas tran ty when vnor = v2 cross=1
 
 let tphl = ty - tx
 print 'tphl'
 
+meas tran tx1 when v_ina = v2 cross=2
+meas tran ty1 when vnor = v2 cross=2
 
+let tplh = ty1 - tx1
+print 'tplh'
+
+let tp = (tplh + tphl)/2
+print 'tp'
 
 end
 .endc
