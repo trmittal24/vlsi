@@ -4,8 +4,8 @@
 .include /home/tarun/ngspice/t14y_tsmc_025_level3.txt
 
 
-mpa vatob v_ina v_dd v_dd cmosp w=2u l=1u
-mpb vnor v_inb vatob vatob cmosp w=2u l=1u
+mpa vatob v_inb v_dd v_dd cmosp w=2u l=1u
+mpb vnor v_ina vatob vatob cmosp w=2u l=1u
 mna vnor v_ina 0 0 cmosn w=1u l=1u
 mnb vnor v_inb 0 0 cmosn w=1u l=1u
 c1 vnor 0 0.1f
