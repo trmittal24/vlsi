@@ -11,6 +11,8 @@ printf("Hi, %s.\n", name);      // Writing output to STDOUT
 #include<stdio.h>
 //barun is great
 //_/\_
+//naksha is great too
+//_/\_ 
 int main()
 {
     int i,t,n,k,j,m,a[1000000],d[1000000],b[1000];
